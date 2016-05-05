@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -116,7 +116,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/Linux-MySQL/" style="font-size: 10px;">Linux MySQL</a>
 					</div>
 				</section>
 				
@@ -201,6 +201,65 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-linux-源码安装mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/05/linux-源码安装mysql/" class="article-date">
+  	<time datetime="2016-05-05T06:28:42.000Z" itemprop="datePublished">2016-05-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/05/linux-源码安装mysql/">linux 源码安装mysql</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="解压源码并安装"><a href="#解压源码并安装" class="headerlink" title="解压源码并安装"></a>解压源码并安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; groupadd mysql</span><br><span class="line">shell&gt; useradd -r -g mysql mysql</span><br><span class="line">shell&gt; <span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">shell&gt; tar zxvf /path/to/mysql-5.7.9-linux-glibc2.5-x86_64.tar.gz</span><br><span class="line">shell&gt; ln <span class="_">-s</span> full-path-to-mysql-5.7.9-linux-glibc2.5-x86_64 mysql</span><br><span class="line">shell&gt; <span class="built_in">cd</span> mysql</span><br><span class="line">shell&gt; mkdir mysql-files</span><br><span class="line">shell&gt; chmod 770 mysql-files</span><br><span class="line">shell&gt; chown -R mysql .</span><br><span class="line">shell&gt; chgrp -R mysql .</span><br></pre></td></tr></table></figure>
+<h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><p>先拷贝my.cnf到/etc/下面 在初始化<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; bin/mysql_install_db --user=mysql    <span class="comment"># Before MySQL 5.7.6</span></span><br><span class="line">shell&gt; bin/mysqld --initialize --user=mysql <span class="comment"># MySQL 5.7.6 and up</span></span><br><span class="line">shell&gt; bin/mysql_ssl_rsa_setup  <span class="comment"># MySQL 5.7.6 and up</span></span><br><span class="line">shell&gt; chown -R root .</span><br><span class="line">shell&gt; chown -R mysql data mysql-files</span><br><span class="line">shell&gt; cp support-files/mysql.server /etc/init.d/mysql.server   <span class="comment">#添加服务</span></span><br><span class="line">shell&gt; chkconfig --add mysql.server <span class="comment">#随系统启动</span></span><br><span class="line">shell&gt; service mysql.server &#123;start|stop|restart|reload|force-reload|status&#125; <span class="comment">#启动服务</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="修改环境变量"><a href="#修改环境变量" class="headerlink" title="修改环境变量"></a>修改环境变量</h2><p>1.vim ~/.bash_profile 在最后面添加<br>export PATH=$PATH:/usr/local/mysql/bin(你的安装bin目录)<br>:wq 保存退出<br>2.source ~/.bash_profile (环境变量生效)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-MySQL/">Linux MySQL</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
